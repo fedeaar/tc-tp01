@@ -1,4 +1,0 @@
-\babel@toc {spanish}{}\relax 
-\setcounter {tocdepth}{0}
-\contentsline {section}{\tocsection {}{}{resumen}}{1}{section*.1}%
-\setcounter {tocdepth}{3}
