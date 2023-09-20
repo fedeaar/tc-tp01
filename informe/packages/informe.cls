@@ -24,7 +24,7 @@
 \renewcommand{\contentsname}{contenidos}
 \renewcommand{\refname}{Referencias}
 % \renewcommand\qedsymbol{$\blacksquare$}
-\renewcommand{\lstlistingname}{Algoritmo}
+\renewcommand{\lstlistingname}{Código}
 \renewcommand{\figurename}{Figura}
 \renewcommand\thesubfigure{\roman{subfigure}}
 \captionsetup[subfloat]{labelformat=empty}

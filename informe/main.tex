@@ -5,6 +5,7 @@
 \usepackage[spanish]{babel}
 \graphicspath{./files/src/.media/}
 
+\hyphenation{me-tro-po-li-ta-na}
 \begin{document} 
 
 % caratula 
@@ -12,7 +13,7 @@
 
 % palabras clave y resumen
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
-\section*{resumen}
+\section*{Introducción}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
 \input{files/src/resumen.tex}
 % \newpage
@@ -20,6 +21,11 @@
 % contenido
 \tableofcontents
 \newpage
+
+% experimentacion
+\section{Métodos y condiciones de los experimentos}
+\input{files/src/experimentacion.tex}
+% \newpage
 
 % apendice
 % \section{Apéndice}
