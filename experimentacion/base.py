@@ -10,7 +10,7 @@ def informacion(ps):
 
 def entropia(S): # S = [ps ... ]
     N = sum(S.values())
-    e = np.sum([ps * informacion(ps/N) for ps in S.values()])
+    e = np.sum([(k/N) * informacion(k/N) for k in S.values()])
     return e
 
 def mostrar_informacion(S):
@@ -37,6 +37,6 @@ def callback(pkt):
 
 if __name__ == "__main__":
     
-    sniff(prn=callback, count=10000)
+    sniff(prn=callback, count=20000)
     mostrar_fuente(S1)
     mostrar_informacion(S1)
