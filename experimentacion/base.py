@@ -37,6 +37,6 @@ def callback(pkt):
 
 if __name__ == "__main__":
     
-    sniff(prn=callback, count=20000)
+    sniff(prn=callback, count=10000)
     mostrar_fuente(S1)
     mostrar_informacion(S1)
