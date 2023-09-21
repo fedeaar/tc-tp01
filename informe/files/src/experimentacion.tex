@@ -1,0 +1,21 @@
+% experimentacion
+\vspace{1em}
+Implementamos en \textit{python}, con ayuda de las bibliotecas de \textit{scapy}, \textit{numpy} y el código provisto por la cátedra, una serie de funciones dedicadas al filtrado de paquetes ---por tipo de protocolo y tipo de dispersión---, detección de símbolos ---y su probabilidad de ocurrencia---, el cálculo de la información, y el cálculo de la entropía de la fuente. El Código \ref{funciones} muestra la implementación de estas últimas dos funciones. En el caso de \textit{entropía} se aprovechó la sintáxis de comprensión de listas para definir los valores de la sumatoria.
+
+\vspace{1em}
+\lstinputlisting[language=pseudo, label=funciones, caption={Implementación del cálculo de \textit{información} y de \textit{entropía}.}, captionpos=b]{files/src/.code/funciones.py}
+
+\vspace{1em}
+La metodología empleada para el desarrollo del experimento fue la siguiente: trabajamos sobre el tráfico de tres redes diferentes, como observadas por tres hosts particulares. 
+
+\begin{itemize}
+\item \textit{red 1}: como observada por un host con acceso por conexión wi-fi, ubicado en un edificio céntrico de la ciudad.
+\item \textit{red 2}: como observada por un host con acceso por conexión ethernet, ubicado en una zona suburbana de la ciudad.
+\item \textit{red 3}: como observada por un host con conexión wi-fi ubicado en una casa en el norte de la provincia.
+\end{itemize}
+
+Podemos considerar la ubicación de cada uno de estos hosts como ubicaciones dentro de distintos anillos concéntricos, en términos de densidad poblacional, dentro del área metropolitana de Buenos Aires.
+
+Para cada red, tomamos muestras de $20.000$ tramas en diferentes horarios ---mañana (9 am), tarde (18 pm) y noche (23 pm)--- y controlamos la interacción del host con la red. Esto es, las mediciones se realizaron bajo un contexto de \textit{reposo} ---minimizando la cantidad de paquetes envíados---, de actividad \textit{normal} y bajo uso \textit{intensivo}.
+
+
