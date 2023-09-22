@@ -29,22 +29,26 @@ def graficar(data1, data2, data3, opciones):
     plt.savefig(opciones["save-as"])
 
 def graficar_medidas(experimento):
-    S1 = leer_dump.leer_dump(f"./out/fede-{experimento}.txt")    
-    S2 = leer_dump.leer_dump(f"./out/natan-{experimento}.txt")
-    S3 = leer_dump.leer_dump(f"./out/manu-{experimento}.txt")
+    S1, ts1 = leer_dump.leer_dump(f"./out/fede-{experimento}.txt")    
+    S2, ts2 = leer_dump.leer_dump(f"./out/natan-{experimento}.txt")
+    S3, ts3 = leer_dump.leer_dump(f"./out/manu-{experimento}.txt")
     graficar(S1, S2, S3, {
-        "save-as": f"{experimento}-probabilidad.jpg",
+        "save-as": f"./out/{experimento}-probabilidad.jpg",
         "titulo": f"Probabilidad de ocurrencia por símbolo, redes en {experimento}",
         "apply": lambda key, x: x.get(key, 0) / np.sum(list(x.values())),
         "ylabel": "probabilidad"
     })    
     graficar(S1, S2, S3, {
-        "save-as": f"{experimento}-informacion.jpg",
+        "save-as": f"./out/{experimento}-informacion.jpg",
         "titulo": f"Información por símbolo, redes en {experimento}",
         "apply": lambda key, x: leer_dump.informacion(x.get(key, 0) / np.sum(list(x.values()))),
         "ylabel": "información"
     })
-    print("entropia en %s para S1: %.5f, S2: %.5f, S3: %.5f" % (experimento, leer_dump.entropia(S1), leer_dump.entropia(S2), leer_dump.entropia(S3)))
+    print("entropia en %s para S1: %.5f, S2: %.5f, S3: %.5f" % 
+          (experimento, leer_dump.entropia(S1), leer_dump.entropia(S2), leer_dump.entropia(S3)))
+    print("tiempo en lograr 10000 tramas en %s para S1: %s, S2: %s, S3: %s" % 
+          (experimento, ts1, ts2, ts3))
+
 
 if __name__ == "__main__":
 

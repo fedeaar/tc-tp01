@@ -13,18 +13,23 @@ def entropia(S): # S = { s: q }
 def leer_dump(path):
     S = {}
     pattern = re.compile(r'\-\((\w+), (\d+)\)\-\>')
+    time_pattern = re.compile(r'time\:(.*)')
     with open(path, 'r', errors='ignore') as file:
-        for x, line in enumerate(file):
-            # print(line[:-1], x)
+        time = None
+        for line in file:
+            match_time = time_pattern.search(line)
+            if (match_time != None):
+                time = match_time.group(1)
+                continue
             match = pattern.search(line)
             dire = match.group(1)
-            proto = match.group(2)
-            # print(dire, proto)
+            proto = match.group(2)           
             s_i = (dire, proto) # Aca se define el simbolo de la fuente
             if s_i not in S:
                 S[s_i] = 0.0
             S[s_i] += 1.0
-    return S
+        
+    return S, time
 
 def mostrar_fuente(S):
     N = sum(S.values())
