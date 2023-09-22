@@ -6,7 +6,7 @@ def graficar(data1, data2, data3):
     # Crear un diccionario combinado con valores predeterminados de 0
     combined_data = {}
     for key in set(data1.keys()).union(data2.keys()).union(data3.keys()):
-        combined_data[key] = [x[key] / np.sum(list(x.values())) for x in [data1, data2, data3]]
+        combined_data[key] = [x.get(key, 0) / np.sum(list(x.values())) for x in [data1, data2, data3]]
 
     # Separar los datos combinados en listas de etiquetas y valores
     categories = [f'{key[0]}, {key[1]}' for key in combined_data.keys()]
