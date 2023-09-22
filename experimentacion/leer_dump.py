@@ -38,12 +38,12 @@ def mostrar_fuente(S):
     
 if __name__ == "__main__":
 
-    path1 = "../out/fede-reposo.txt"
-    path2 = "../out/natan-reposo.txt"
-    path3 = "../out/manu-reposo.txt"
-    S1 = leer_dump(path1)
-    S2 = leer_dump(path2)
-    S3 = leer_dump(path3)
+    path1 = "./out/fede-reposo.txt"
+    path2 = "./out/natan-reposo.txt"
+    path3 = "./out/manu-reposo.txt"
+    S1, t1 = leer_dump(path1)
+    S2, t2 = leer_dump(path2)
+    S3, t3 = leer_dump(path3)
     print(f"e={entropia(S1)}")
     print(f"e={entropia(S2)}")
     print(f"e={entropia(S3)}")
