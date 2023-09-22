@@ -15,4 +15,4 @@ if __name__ == "__main__":
     inicio = time.time()
     sniff(prn=callback, count=10000)
     fin = time.time()
-    print(fin - inicio)
+    print(f"time:{fin - inicio}")
