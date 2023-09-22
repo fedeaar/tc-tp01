@@ -5,26 +5,25 @@ def informacion(ps):
     i = -np.log2(ps)
     return i
 
-def entropia(S): # S = [ps ... ]
+def entropia(S): # S = { s: q }
     N = sum(S.values())
     e = np.sum([(k/N) * informacion(k/N) for k in S.values()])
     return e
 
 def leer_dump(path):
     S = {}
-    pattern = re.compile(r'-\((\w+), (\d+)\)->')
-    with open(path, 'r', encoding="utf-8") as file:
-        for line in file:
-            print(line[:-1])
+    pattern = re.compile(r'\-\((\w+), (\d+)\)\-\>')
+    with open(path, 'r', errors='ignore') as file:
+        for x, line in enumerate(file):
+            # print(line[:-1], x)
             match = pattern.search(line)
             dire = match.group(1)
             proto = match.group(2)
-            print(dire, proto)
+            # print(dire, proto)
             s_i = (dire, proto) # Aca se define el simbolo de la fuente
             if s_i not in S:
                 S[s_i] = 0.0
             S[s_i] += 1.0
-
     return S
 
 def mostrar_fuente(S):
