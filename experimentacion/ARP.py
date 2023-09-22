@@ -11,7 +11,7 @@ def procesar_paquetes(packet):
         else:
             arp_packets[direcciones] = 1
 
-        print("Encontré un paquete ARP...")
+        print(f"ARP: {direcciones}")
 
 
 
