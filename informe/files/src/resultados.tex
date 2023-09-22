@@ -5,18 +5,26 @@ En primer lugar, observemos la distribución de los protocolos y tipos de paquet
 
 
 \begin{figure}
-    \centering
-    \begin{subfigure}[h]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.7\textwidth, trim=0 0 0 10]{./files/src/img/actividad-probabilidad.jpg}
-        \caption{$y=x$}
-        \label{actividad-proba}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[h]{0.3\textwidth}
-        \centering
-        \includegraphics[width=0.7\textwidth, trim=0 0 0 10]{./files/src/img/actividad-informacion.jpg}
-        \caption{$y=3\sin x$}
-        \label{actividad-info}
-    \end{subfigure}
+    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/reposo-probabilidad.jpg}}\hfill
+    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/reposo-informacion.jpg}}
 \end{figure}
+
+Los paquetes fueron capturados desde 3 redes diferentes. En este grafico se muestra cual era la distribucion de los paquetes capturados mientras los dispositivos que eran usados para snoopear la red estaban completamente en 'reposo'.
+
+
+Como se puede ver en la figura blabla, en todas las redes mas del 99\% de los paquetes eran de tipo ipv4. Además en menor medida aparecieron algunos paquetes de los protocolos ipv6 y ARP. Pudimos detectar 5 tipos diferentes de protocolos. 
+\vspace{1em}
+
+Con respecto al destino de los paquetes, podemos observar que cerca del 99\% de los paquetes eran de tipo UNICAST, es decir, tenían un único destinatario. 
+
+
+\begin{figure}
+    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/actividad-probabilidad.jpg}}\hfill
+    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/actividad-informacion.jpg}}
+\end{figure}
+
+Como la computadora estaba en uso constante su entrada en la tabla de direcciones del router nunca se borra por lo cual no se requería de resolver conflictos a través del sistema de BROADCAST, por esto es que se incrementa la predominancia de los paquetes UNICAST por encima de BROADCAST, comparado al caso donde las computadoras estaban en reposo.
+
+
+
+

@@ -32,6 +32,11 @@ def graficar_medidas(experimento):
     S1, ts1 = leer_dump.leer_dump(f"./out/fede-{experimento}.txt")    
     S2, ts2 = leer_dump.leer_dump(f"./out/natan-{experimento}.txt")
     S3, ts3 = leer_dump.leer_dump(f"./out/manu-{experimento}.txt")
+
+    print(f"e={leer_dump.entropia(S1)}")
+    print(f"e={leer_dump.entropia(S2)}")
+    print(f"e={leer_dump.entropia(S3)}")
+
     graficar(S1, S2, S3, {
         "save-as": f"./out/{experimento}-probabilidad.jpg",
         "titulo": f"Probabilidad de ocurrencia por símbolo, redes en {experimento}",
