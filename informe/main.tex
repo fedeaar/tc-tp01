@@ -3,6 +3,8 @@
 \usepackage{./packages/caratula}
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
+\usepackage{caption}
+\usepackage{subcaption}
 \graphicspath{./files/src/.media/}
 
 \hyphenation{me-tro-po-li-ta-na}
@@ -22,10 +24,20 @@
 \tableofcontents
 \newpage
 
+% introduccion
+\section{Introducción}
+\input{files/src/introduccion.tex}
+\newpage
+
 % experimentacion
 \section{Métodos y condiciones de los experimentos}
 \input{files/src/experimentacion.tex}
-% \newpage
+\newpage
+
+% resultados
+\section{Resultados}
+\input{files/src/resultados.tex}
+\newpage
 
 % apendice
 % \section{Apéndice}

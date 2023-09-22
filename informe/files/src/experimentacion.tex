@@ -9,13 +9,14 @@ Implementamos en \textit{python}, con ayuda de las bibliotecas de \textit{scapy}
 La metodología empleada para el desarrollo del experimento fue la siguiente: trabajamos sobre el tráfico de tres redes diferentes, como observadas por tres hosts particulares. 
 
 \begin{itemize}
-\item \textit{red 1}: como observada por un host con acceso por conexión wi-fi, ubicado en un edificio céntrico de la ciudad.
-\item \textit{red 2}: como observada por un host con acceso por conexión ethernet, ubicado en una zona suburbana de la ciudad.
-\item \textit{red 3}: como observada por un host con conexión wi-fi ubicado en una casa en el norte de la provincia.
+\item \textit{red 1}: como observada por un host con conexión wi-fi ubicado en una casa en el norte de la provincia.
+\item \textit{red 2}: como observada por un host con acceso por conexión wi-fi, ubicado en un edificio céntrico de la ciudad.
+\item \textit{red 3}: como observada por un host con acceso por conexión ethernet, ubicado en una zona suburbana de la ciudad.
 \end{itemize}
 
 Podemos considerar la ubicación de cada uno de estos hosts como ubicaciones dentro de distintos anillos concéntricos, en términos de densidad poblacional, dentro del área metropolitana de Buenos Aires.
 
-Para cada red, tomamos muestras de $20.000$ tramas en diferentes horarios ---mañana (9 am), tarde (18 pm) y noche (23 pm)--- y controlamos la interacción del host con la red. Esto es, las mediciones se realizaron bajo un contexto de \textit{reposo} ---minimizando la cantidad de paquetes envíados---, de actividad \textit{normal} y bajo uso \textit{intensivo}.
+Para cada red, tomamos muestras de $10.000$ tramas a lo largo de diferentes horarios ---mañana (9 am), tarde (18 pm) y noche (23 pm)---, y controlamos la interacción del host con la red. Esto es, las mediciones se realizaron bajo un contexto de \textit{reposo} ---minimizando la cantidad de paquetes envíados--- y bajo uso \textit{intensivo}.
+
 
 
