@@ -1,0 +1,50 @@
+red 1, expermiento: actividad
+('UNICAST', '2048'), q: 9994, p: 0.99940, i: 0.00087
+('UNICAST', '2054'), q: 6, p: 0.00060, i: 10.70275
+None
+e=0.0072870072147704495
+red 2, expermiento: actividad
+('UNICAST', '2048'), q: 9710, p: 0.97100, i: 0.04246
+('UNICAST', '34525'), q: 280, p: 0.02800, i: 5.15843
+('UNICAST', '2054'), q: 4, p: 0.00040, i: 11.28771
+('BROADCAST', '2048'), q: 3, p: 0.00030, i: 11.70275
+('BROADCAST', '2054'), q: 3, p: 0.00030, i: 11.70275
+None
+e=0.19719830909689318
+red 3, expermiento: actividad
+('UNICAST', '2048'), q: 9998, p: 0.99980, i: 0.00029
+('UNICAST', '2054'), q: 2, p: 0.00020, i: 12.28771
+None
+e=0.002746052628263047
+/home/faari/Desktop/3.2 Teoría de las Comunicaciones/Talleres/T1/experimentacion/leer_dump.py:5: RuntimeWarning: divide by zero encountered in log2
+  i = -np.log2(ps)
+entropia en actividad para S1: 0.00729, S2: 0.19720, S3: 0.00275
+tiempo en lograr 10000 tramas en actividad para S1: 102.59205222129822, S2: None, S3: 18.621744632720947
+red 1, expermiento: reposo
+('UNICAST', '2048'), q: 9542, p: 0.95430, i: 0.06749
+('UNICAST', '2054'), q: 412, p: 0.04120, i: 4.60107
+('UNICAST', '34525'), q: 31, p: 0.00310, i: 8.33337
+('BROADCAST', '2054'), q: 13, p: 0.00130, i: 9.58713
+('BROADCAST', '2048'), q: 1, p: 0.00010, i: 13.28757
+None
+e=0.2936198145736234
+red 2, expermiento: reposo
+('UNICAST', '2048'), q: 7349, p: 0.73512, i: 0.44395
+('UNICAST', '34525'), q: 2613, p: 0.26138, i: 1.93579
+('UNICAST', '2054'), q: 32, p: 0.00320, i: 8.28728
+('UNICAST', '26734'), q: 1, p: 0.00010, i: 13.28728
+('UNICAST', '35020'), q: 1, p: 0.00010, i: 13.28728
+('BROADCAST', '2048'), q: 1, p: 0.00010, i: 13.28728
+None
+e=0.8628426093822834
+red 3, expermiento: reposo
+('UNICAST', '2048'), q: 8892, p: 0.85270, i: 0.22988
+('UNICAST', '2054'), q: 1019, p: 0.09772, i: 3.35524
+('BROADCAST', '2054'), q: 345, p: 0.03308, i: 4.91772
+('UNICAST', '34525'), q: 151, p: 0.01448, i: 6.10977
+('BROADCAST', '2048'), q: 21, p: 0.00201, i: 8.95586
+None
+e=0.7930921467386626
+
+entropia en reposo para S1: 0.29362, S2: 0.86284, S3: 0.79309
+tiempo en lograr 10000 tramas en reposo para S1: None, S2: 696.3955442905426, S3: None
