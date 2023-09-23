@@ -1,4 +1,27 @@
 % nodos distinguidos
-El objetivo de esta sección es analizar las direcciones IP provenientes de los paquetes ARP de las tres redes. En particular, buscamos distinguir símbolos y hosts de las fuentes creadas según la cantidad de información que proveen. Para ello, capturamos hasta $1000$ tramas por red bajo un contexto de uso normal de los dispositivos, en diferentes horarios del día. 
+En un primer lugar, observamos que en todas las fuentes los símbolos incluyendo las IPs propias del router y las máquinas utilizadas eran los más probables: en promedio, representaban un $70.6\%$ de los paquetes a lo largo de las redes, conformando un $90.2\%$ de los paquetes en las redes WiFi y un $34.1\%$ en la red Ethernet. Creemos que estos paquetes están realizando el intercambio de mensajes correspondientes a \textit{who-has} del protocolo.
 
-En un primer lugar, observamos que en todas las fuentes los símbolos incluyendo las IPs propias del router y las máquinas utilizadas eran los más probables: en promedio, representaban un $70.6\%$ de los paquetes a lo largo de las redes, conformando un $90.2\%$ de los paquetes en las redes WiFi y un $34.1\%$ en la red Ethernet. Creemos que esta diferencia puede deberse a las particularidades de las redes¡. Mientras que en ambas redes WiFi habían pocos hosts además de los medidores, existían más de 10 hosts conectados al router de la red Ethernet, tanto por WiFi como por cable. De este modo, de requerir actualizar la tabla de direcciones el router debía de enviar los mensajes ARP a ambas redes y, en consecuente, disminuyó la probabilidad de aparición de los símbolos mencionados.
+Estas diferencias pueden deberse a las particularidades de las redes. Mientras que en ambas redes WiFi habían pocos hosts además de los medidores, existían más de 10 hosts conectados al router de la red Ethernet, tanto por WiFi como por cable. De este modo, de requerir actualizar la tabla de direcciones, el router debía enviar los mensajes ARP a ambas redes. En consecuencia, disminuyó la probabilidad de aparición de los símbolos mencionados.
+
+Por otro lado, al calcular las entropías de las redes obtenemos los siguientes valores:
+
+\vspace{1em}
+\begin{figure}[!htbp]
+    \begin{tabular}{ |c|c|c| } 
+    \hline
+    red & entropía aproximada & entropía máxima teórica\\
+    \hline
+    \textit{red 1} & $1.515$ & $4.169$ \\
+    \textit{red 2} & $3.651$ & $5.169$ \\
+    \textit{red 3} & $1.818$ & $3.807$ \\
+    \hline
+    \end{tabular} \\
+    \bigskip
+    \caption{Entropía de las fuentes de información nula basadas en las direcciones de los paquetes ARP.} \label{entropia}
+\end{figure}
+
+Como puede observarse, la red de Ethernet presenta más del doble de entropía que ambas redes WiFi. Esto se debe a que la distribución de los símbolos en esta red es más uniforme en comparación a las otras dos. Con respecto a la entropía máxima, la segunda red es la que más se aproxima, llegando a más del $70\%$ de su cota teórica.
+
+Observamos además un comportamiento inesperado con respecto a algunos pares de símbolos. En el protocolo ARP, se espera que la cantidad de paquetes en una dirección sea similar a los paquetes en la dirección contraria. Es decir, los símbolos $\langle \ ip1, ip2\ \rangle$ e $\langle\ ip2, ip1\ \rangle$ deberían tener una cantidad de apariciones cercanas. Esto se debe a que un host pregunta por una dirección IP, y el propietario responde. De todos modos, vemos que esto no fue necesariamente cierto para ninguna de las redes, donde se pudieron capturar hasta 10 veces más paquetes en una dirección comparado a su contraria. Creemos que esto puede deberse a pérdida de paquetes o al problema del nodo oculto.
+
+Por último, notamos la aparición inesperada de la $ip$ = 0.0.0.0 en algunos paquetes. Esta es una dirección $ip$ utilizada en algunas configuraciones de red como \textit{default gateway} de las tablas de enrutamiento.
