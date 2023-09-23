@@ -1,9 +1,7 @@
 % introduccion
-\vspace{1em}
-Al momento de establecer una comunicación entre dos o más computadoras, se utilizan los llamados Medios de Acceso Compartido. Estos son canales de transmisión de información donde varios dispositivos se ponen de acuerdo sobre un conjunto de reglas y protocolos para poder intercambiar datos.
 
-\vspace{1em}
-A su vez, los datos transmitidos son divididos en paquetes más pequeños, también llamados tramas, para su transportación. Cada uno de ellos contiene información sobre los protocolos que encapsula, su origen, y su destino particular, en caso de un paquete de tipo \textit{Unicast}, o pueden indicar que fueron enviados a todos los nodos de una red, para los paquetes de tipo \textit{Broadcast}. Estas tramas pueden ser capturadas y estudiadas por cualquier dispositivo conectado al medio. 
+Los llamados Medios de Acceso Compartido se utilizan al momento de establecer una comunicación entre dos o más computadoras. El término refiere, de manera general, a cualquier tipo de canal ---tanto físico como lógico--- que establece un conjunto de reglas y protocolos para la transmisión de datos entre dispositivos electrónicos.
 
-\vspace{1em}
-A lo largo de este trabajo analizaremos las características de tres redes domésticas particulares. En especial, capturaremos los diversos paquetes de datos que las circulan, analizaremos los protocolos que utilizan las distintas capas de red, y buscaremos tendencias y patrones entre las tramas.
+Estos datos son, a su vez, divididos en paquetes más pequeños ---también llamados tramas--- para su transportación. Cada uno de ellos contiene información sobre los protocolos que encapsula, su origen y su destino. En el caso de paquetes de tipo \textit{Unicast}, este destino es un dispositivo particular. Mientras que, en el caso de paquetes de tipo \textit{Broadcast}, un emisor puede enviar su paquete a todos los nodos conectados a la misma red. Sin embargo, estos datos pueden ser capturados y estudiados por cualquier otro dispositivo conectado al medio ---como en el caso de Ethernet--- o que se encuentre en el área de alcance del emisor ---como en el caso de Wi-Fi---, independientemente de su tipo. 
+
+A lo largo de este trabajo analizaremos las características de tres redes domésticas particulares que modelaremos como fuentes de información nula con símbolos \textit{$\langle$tipo de emisión,  protocolo utilizado$\rangle$}. En particular, capturaremos los diversos paquetes de datos que las circulan, analizaremos ---de manera general--- los protocolos que utilizan las distintas capas de cada red, y buscaremos tendencias y patrones entre las tramas.
