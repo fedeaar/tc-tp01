@@ -11,10 +11,10 @@ def leer_IPs(S):
         ip1, ip2 = s[0], s[1]
         if ip1 not in ips:
             ips[ip1] = 0.0
-        ips[ip1] += 1.0 * S[s]
+        ips[ip1] += S[s]
         if ip2 not in ips:
             ips[ip2] = 0.0
-        ips[ip2] += 1.0 * S[s]
+        ips[ip2] += S[s]
     return ips
 
 def entropia(S): # S = { s: q }
@@ -68,6 +68,6 @@ def mostrar_fuente(S):
     
 if __name__ == "__main__":
 
-    path = "./out/fede-ARP.txt"
+    path = "./out/manu-ARP.txt"
     S = leer_ARP(path)
     print(S)
