@@ -1,31 +1,9 @@
 % introduccion
 
-\vspace{1em}
-A lo largo de este informe analizamos el flujo de los paquetes en 3 redes ubicadas en distintos lugares de la ciudad. Pudimos observar que la mayoría de los paquetes son de tipo UNICAST ipv4, también notamos que varía fuertemente el caudal de paquetes cuando la red esta en uso constante. 
+A lo largo de este informe analizamos el flujo de los paquetes en tres redes ubicadas en distintos lugares del área metropolitana de Buenos Aires. Pudimos observar que la mayoría de los paquetes son de tipo \textit{$\langle$Unicast, IPv4$\rangle$} y que varía fuertemente el caudal de paquetes cuando la red está en uso por el host y cuando no. 
 
-Notamos que las muestras tomadas no fueron en su totalidad representativas del comportamiento de la red.
+A su vez, observamos que el porcentaje de paquetes de tipo \textit{Broadcast} es prácticamente despreciable en comparación con los de tipo \textit{Unicast}. Esto tiene sentido, ya que los paquetes del mismo tipo suelen ocurrir en el contexto de protocolos de control.
 
-Observamos que el porcentaje de paquetes de tipo BROADCAST es prácticamente despreciable en comparación con los de tipo UNICAST. 
+Sin embargo, consideramos que las muestras tomadas no fueron lo suficientemente representativas del comportamiento de la red. El momento del día, el tipo de conexión, la ubicación geográfica y la actividad del host son distintos factores que definen su comportamiento. La cantidad de muestras que tomamos no son suficientes para capturar estos aspectos correctamente: capturamos momentos aislados, sobre acceso específicos y en contextos particulares.
 
-Capturando paquetes encontramos distintos tipos de protocolos, ellos son:
-
-\begin{itemize}
-    \item IPV4 : 2048
-    \item IPV6 : 34525
-    \item ARP : 2054
-    \item LLDP : 35020
-\end{itemize}
-
-IPV4 : Es el protocolo de internet más ampliamente difundido, este se caracteriza por ser una dirección de 32 bits representada por 4 números de 8 bits separados por '.', debido al crecimiento de la red de internet la cantidad de IPs diferentes se fue agotando por lo que se debieron implementar medidas para expandir la cantidad direccionable. Una estrategia fue generar un protocolo nuevo llamado IPV6. Otra fue permitir que varios dispositivos tengan una única dirección IP pública con el uso de NAT. 
-
-IPV6 : Este protocolo es una expansión del IPV4, el cual posee direcciones de 128 bits, típicamente representadas de forma hexadecimal por 8 números de 16 bits separados por ':'. Básicamente este existe para incrementar la cantidad de direcciones en la red pero además tiene mejoras en cuestiones de administración y seguridad.
-
-ARP (Address Resolution Protocol) : es un protocolo utilizado en redes de computadoras para mapear direcciones de nivel de red (como direcciones IP) a direcciones de nivel de enlace (como direcciones MAC) en una red local.
-
-LLDP (Link Layer Discovery Protocol) : es un protocolo de red de capa 2 utilizado en redes Ethernet y en otras tecnologías de capa de enlace. La función principal de LLDP es permitir que los dispositivos en una red descubran y anuncien información sobre sí mismos y sus capacidades a otros dispositivos vecinos. 
-
-La entropía máxima sabemos que corresponde con el $log_2(n)$ donde $n$ representa la cantidad de paquetes capturados. 
- 
-
-También encontramos un protocolo número 26734, que no encontramos que protocolo representa. 
-
+Finalmente, cabe destacar que la entropía máxima para una fuente de información nula se da en el caso en que los simbolos ocurren con equiprobabilidad, y  corresponde con $\log_2(n)$ ---donde $n$ representa la cantidad de símbolos presentes---. Notamos que ninguna de las fuentes tuvo una entropía que se acerque a este límite teórico. 

@@ -8,9 +8,10 @@ def graficar(data1, data2, data3, opciones):
     for key in set(data1.keys()).union(data2.keys()).union(data3.keys()):
         combined_data[key] = [opciones["apply"](key, x) for x in [data1, data2, data3]]
 
-    categories = [f'{key[0]}, {key[1]}' for key in combined_data.keys()]
-    categories.sort()
-    values1, values2, values3 = zip(*combined_data.values())
+    keys = list(combined_data.keys())
+    keys.sort()
+    categories = [f'{key[0][0]}: {key[1]}' for key in keys]
+    values1, values2, values3 = zip(*[combined_data[key] for key in keys])
 
     plt.figure()
     width = 0.2  # Ancho de las barras
@@ -19,13 +20,14 @@ def graficar(data1, data2, data3, opciones):
     plt.bar(np.arange(len(categories)) + width, values2, width, label='red 2')
     plt.bar(np.arange(len(categories)) + 2 * width, values3, width, label='red 3')
 
-    plt.xticks(np.arange(len(categories)) + width, categories, rotation=45)
-    plt.xlabel('Símbolo')
-    plt.ylabel(opciones["ylabel"])
+
+    plt.xticks(np.arange(len(categories)) + width, categories, rotation=45, fontsize=15)
+    plt.xlabel('Símbolo', fontsize=15)
+    plt.ylabel(opciones["ylabel"], fontsize=15)
     # plt.title(opciones["titulo"])
     # plt.yscale('log')
 
-    plt.legend()
+    plt.legend(fontsize=15)
     plt.tight_layout()
     plt.savefig(opciones["save-as"])
 
