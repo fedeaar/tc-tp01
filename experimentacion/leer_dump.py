@@ -68,6 +68,13 @@ def mostrar_fuente(S):
     
 if __name__ == "__main__":
 
-    path = "./out/manu-ARP.txt"
-    S = leer_ARP(path)
-    print(S)
+    path1 = "./out/fede-ARP.txt"
+    path2 = "./out/natan-ARP.txt"
+    path3 = "./out/manu-ARP.txt"
+    S1 = leer_ARP(path1)
+    S2 = leer_ARP(path2)
+    S3 = leer_ARP(path3)
+    mostrar_fuente(S1)
+    mostrar_fuente(S2)
+    mostrar_fuente(S3)
+
