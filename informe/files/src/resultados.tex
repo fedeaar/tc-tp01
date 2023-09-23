@@ -1,46 +1,73 @@
 % introduccion
+En primer lugar, observemos la distribución de los protocolos y tipos de paquetes resultantes de las capturas realizadas. La figura \ref{fig1} muestra cuál fue la distribucion,  y su respectiva medida de \textit{información}, ---observada--- de los paquetes capturados mientras los hosts estaban en 'reposo'. 
 
-\vspace{1em}
-En primer lugar, observemos la distribución de los protocolos y tipos de paquetes en las distintas redes. 
-
-
-\begin{figure}
-    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/reposo-probabilidad.jpg}}\hfill
-    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/reposo-informacion.jpg}}
+\begin{figure}[!htbp]
+    \includegraphics[scale=0.5, clip]{files/src/img/reposo-probabilidad.jpg}\hfill
+    \includegraphics[scale=0.5, clip]{files/src/img/reposo-informacion.jpg}
+    \caption{\textit{Probabilidad de ocurrencia} e \textit{información}, por símbolo, para las redes en \textit{reposo}.}\label{fig1}
 \end{figure}
 
-Los paquetes fueron capturados desde 3 redes diferentes. En este grafico se muestra cual era la distribucion de los paquetes capturados mientras los dispositivos que eran usados para snoopear la red estaban completamente en 'reposo'.
+Notar que, en todas las redes, más del $70\%$ de los paquetes utilizan el símbolo \textit{$\langle$unicast, 2048$\rangle$}, que corresponde al protocolo \text{IPv4}: $95.42\%$ para la \textit{red 1}, $73.51\%$ para la \textit{red 2} y $85.27\%$ para la \textit{red 3}. Además, en menor medida aparecieron algunos paquetes de los protocolos \textit{IPv6} ($34525$) y \textit{ARP} ($2054$). En total, pudimos detectar $6$ tipos diferentes de protocolos.
 
+En particular, es de interés que la \textit{red 2}, que utiliza Ethernet, tuvo la mayor inicidencia de otros tipos: el  $26.13\%$ fueron paquetes \textit{Unicast} sobre \textit{IPv6}. Así también, hubo mayor variedad: detectamos tramas de los protocolos \textit{LLDP} ($35020$) ---propia de enlaces de nivel 2, como Ethernet---, y $26734$, que no pudimos encontrar a qué protocolo corresponde.
 
-Como se puede ver en la figura blabla, en todas las redes mas del 99\% de los paquetes eran de tipo ipv4. Además en menor medida aparecieron algunos paquetes de los protocolos ipv6 y ARP. Pudimos detectar 5 tipos diferentes de protocolos. 
+Respecto a los tipos de emisión, notamos que fueron predominantemente de tipo \textit{Unicast}. Sólo hubo $14$ paquetes de tipo \textit{Broadcast} en la \textit{red 1}, $1$ en la \textit{red 2} y $366$ en la \textit{red 3} ---de estos, $345$ ocurrieron en conjunto al protocolo \textit{ARP}---. Consideramos que la mayor incidencia en la \textit{red 3} puede deberse a que se encuentra en una ubicación (relativamente) más remota. 
+
+Vemos, finalmente, que la \textit{información} provista por cada símbolo, en cada fuente, es bastante variada. Sin embargo, notamos el comportamiento ---evidente en base a la teoría--- de la medida: los protocolos y tipos de emisión con menor ocurrencia aportan la mayor cantidad de información. En particular, los de tipo de emisión \textit{Broadcast}.
+
 \vspace{1em}
+Por otro lado, la figura \ref{fig2} muestra cuál fue la distribucion,  y su respectiva medida de \textit{información}, ---observada--- de los paquetes capturados mientras los hosts estaban realizando actividades 'intensas'.
 
-Con respecto al destino de los paquetes, podemos observar que cerca del 99\% de los paquetes eran de tipo UNICAST, es decir, tenían un único destinatario. 
-
-
-\begin{figure}
-    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/actividad-probabilidad.jpg}}\hfill
-    \subfloat[]{\includegraphics[width=0.45\textwidth]{files/src/img/actividad-informacion.jpg}}
+\begin{figure}[!htbp]
+    \includegraphics[scale=0.5, clip]{files/src/img/actividad-probabilidad.jpg}\hfill
+    \includegraphics[scale=0.5, clip]{files/src/img/actividad-informacion.jpg}
+    \caption{\textit{Probabilidad de ocurrencia} e \textit{información}, por símbolo, para las redes en actividad \textit{intensa}.}\label{fig2}
 \end{figure}
 
-Como la computadora estaba en uso constante su entrada en la tabla de direcciones del router nunca se borra por lo cual no se requería de resolver conflictos a través del sistema de BROADCAST, por esto es que se incrementa la predominancia de los paquetes UNICAST por encima de BROADCAST, comparado al caso donde las computadoras estaban en reposo.
+Notamos que, en comparación, hay mucha menor variedad en los paquetes: el $99.94\%$, $97.10\%$ y $99.98\%$ ---respectivamente, para las las redes $1$, $2$ y $3$--- fueron \textit{$\langle$Unicast, 2048$\rangle$}. Así también, la \textit{red 1} y la \textit{red 3} sólo detectaron paquetes de tipo \textit{Unicast} y, aparte del protocolo \textit{IPv4}, solo detectaron el \textit{ARP}. Nuevamente, la \textit{red 2} fue la más variada, siendo la única que detectó paquetes de tipo \textit{Broadcast} (6 en total). 
 
-Medimos la entropia de cada una de las tres fuentes con las tramas resultantes de las capturas en reposo. Los resultados aproximados de las entropias fueron:
+Consideramos que la mayor predominancia del tipo \textit{Unicast} se debe a que, como los hosts están utilizando activamente la red, su entrada en la tabla de direccionamiento de los routers cercanos se mantiene. Luego, no se requieren enviar mensajes de \textit{who-has} del protocolo \textit{ARP}, que utilizan el tipo \textit{Broadcast}.
 
-\begin{itemize}
-    \item red1 = 0.793
-    \item red2 = 0.293
-    \item red3 = 0.862
-\end{itemize}
+\vspace{1em}
+Finalmente, procedemos a evaluar los resultados generales de los experimentos. En primer lugar, medimos la entropia de cada una de las tres fuentes (una por cada red) con las tramas resultantes de las capturas en \textit{reposo}. Las mismas se pueden apreciar en la figura \ref{entropia}.
 
-Es decir, se puede esperar una cantidad mayor de información por símbolo en las redes 1 y 3, a comparación de la red 2. Esto muestra que los símbolos en la red 2 tienden a aparecer con menor dispersión, por lo que es altamente probable que el siguiente paquete sea información 'repetida' por lo que la entropía de la red es baja. 
+\vspace{1em}
+\begin{figure}[!htbp]
+    \begin{tabular}{ |c|c| } 
+    \hline
+    red & entropía aproximada \\
+    \hline
+    \textit{red 1} & $ 0.793$\\
+    \textit{red 2} & $ 0.293$\\
+    \textit{red 3} & $ 0.862$\\
+    \hline
+    \end{tabular} \\
+    \bigskip
+    \caption{Entropía de las fuentes de información nula derivadas de las mediciones realizadas sobre cada una de las redes bajo estudio.} \label{entropia}
+\end{figure}
 
+Vemos que se puede esperar una mayor cantidad de información por símbolo en los modelos de las redes $1$ y $3$, en comparación al de la red $2$. Esto muestra que los símbolos en el modelo de la red $2$ tienden a aparecer con menor dispersión. 
 
-Una variable interesante es cuanto tiempo tardo cada red en capturar sus 10000 tramas. Para el caso donde las computadoras que capturaban paquetes estaban en reposo los tiempos aproximados son: 
-\begin{itemize}
-    \item red1 = 2212 segundos
-    \item red2 = 4647 segundos
-    \item red3 = 695 segundos
-\end{itemize}
+Esto tiene sentido ya que, si bien fue la más variada, las anomalías fueron menos frecuentes que en las otras dos redes\footnote{si consideramos que una frecuencia menor al $5\%$ es anómala, sigue que la \textit{red 1} tuvo $4.57\%$ de paquetes anómalos, la \textit{red 2} tuvo $0.35\%$ y la \textit{red 3} tuvo $5.17\%$.}.
 
-Para profundizar el análisis se podría experimentar capturando tramas en diferentes horarios del día y analizar como varía la frecuencia de captura en distintos horarios del día.
+\vspace{1em}
+En segundo lugar, medimos cuánto tiempo tardó cada red en capturar las $10000$ tramas, para el contexto de reposo \textit{reposo}. La figura \ref{tiempos} muestra los resultados.
+
+\vspace{1em}
+\begin{figure}[!htbp]
+    \begin{tabular}{ |c|c|c| } 
+    \hline
+    red & tiempo & tramas por segundo \\
+    \hline
+    \textit{red 1} & $4647$ & $2.15$\\
+    \textit{red 2} & $695$  & $14.39$\\
+    \textit{red 3} & $2222$ & $4.5$\\
+    \hline
+    \end{tabular} \\
+    \bigskip
+    \caption{Tiempo de recolección de $10000$ tramas para cada una de las redes bajo estudio, en el contexto de \textit{reposo}.} \label{tiempos}
+\end{figure}
+
+Consideramos que un análisis de este tipo requiere hacer más mediciones para lograr ser representativo, por lo que los resultados son limitados, en tanto lo que podemos derivar de ellos. 
+
+En la misma línea, como experimentación a futuro, consideramos que podríamos profundizar más el análisis si fueramos a capturar las tramas en diferentes horarios y días de la semana.

@@ -9,6 +9,7 @@ def graficar(data1, data2, data3, opciones):
         combined_data[key] = [opciones["apply"](key, x) for x in [data1, data2, data3]]
 
     categories = [f'{key[0]}, {key[1]}' for key in combined_data.keys()]
+    categories.sort()
     values1, values2, values3 = zip(*combined_data.values())
 
     plt.figure()
@@ -21,20 +22,28 @@ def graficar(data1, data2, data3, opciones):
     plt.xticks(np.arange(len(categories)) + width, categories, rotation=45)
     plt.xlabel('Símbolo')
     plt.ylabel(opciones["ylabel"])
-    plt.title(opciones["titulo"])
-    plt.yscale('log')
+    # plt.title(opciones["titulo"])
+    # plt.yscale('log')
 
     plt.legend()
     plt.tight_layout()
     plt.savefig(opciones["save-as"])
 
 def graficar_medidas(experimento):
-    S1, ts1 = leer_dump.leer_dump(f"./out/fede-{experimento}.txt")    
-    S2, ts2 = leer_dump.leer_dump(f"./out/natan-{experimento}.txt")
-    S3, ts3 = leer_dump.leer_dump(f"./out/manu-{experimento}.txt")
+    S1, ts1 = leer_dump.leer_dump(f"./out/natan-{experimento}.txt")    
+    S2, ts2 = leer_dump.leer_dump(f"./out/manu-{experimento}.txt")
+    S3, ts3 = leer_dump.leer_dump(f"./out/fede-{experimento}.txt")
 
+    print(f"red 1, expermiento: {experimento}")
+    print(leer_dump.mostrar_fuente(S1))
     print(f"e={leer_dump.entropia(S1)}")
+
+    print(f"red 2, expermiento: {experimento}")
+    print(leer_dump.mostrar_fuente(S2))
     print(f"e={leer_dump.entropia(S2)}")
+
+    print(f"red 3, expermiento: {experimento}")
+    print(leer_dump.mostrar_fuente(S3))
     print(f"e={leer_dump.entropia(S3)}")
 
     graficar(S1, S2, S3, {

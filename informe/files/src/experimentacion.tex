@@ -1,21 +1,24 @@
 % experimentacion
-\vspace{1em}
-Implementamos en \textit{python}, con ayuda de las bibliotecas de \textit{scapy}, \textit{numpy} y el código provisto por la cátedra, una serie de funciones dedicadas al filtrado de paquetes ---por tipo de protocolo y tipo de dispersión---, detección de símbolos ---y su probabilidad de ocurrencia---, el cálculo de la información, y el cálculo de la entropía de la fuente. El Código \ref{funciones} muestra la implementación de estas últimas dos funciones. En el caso de \textit{entropía} se aprovechó la sintáxis de comprensión de listas para definir los valores de la sumatoria.
+Implementamos en \textit{python}, con ayuda de las bibliotecas de \textit{scapy}, \textit{numpy} y el código provisto por la cátedra, una serie de funciones dedicadas al filtrado de paquetes ---por tipo de protocolo y tipo de dispersión---, detección de símbolos ---y su probabilidad de ocurrencia---, cálculo de la \textit{información} que cada uno provee, y ---en términos generales--- el cálculo de la \textit{entropía} de cada fuente. El Código \ref{funciones} muestra la implementación de estas últimas dos funciones\footnote{El código concerniente a la detección de paquetes y armado de la fuente de información nula es omitido, ya que es aquel provisto por la cátedra}. En el caso del cálculo de la \textit{entropía}, se aprovechó la sintáxis de comprensión de listas para definir los valores de la sumatoria.
 
 \vspace{1em}
-\lstinputlisting[language=pseudo, label=funciones, caption={Implementación del cálculo de \textit{información} y de \textit{entropía}.}, captionpos=b]{files/src/.code/funciones.py}
+\lstinputlisting[language=pseudo, label=funciones, caption={Implementación del cálculo de \textit{información} y de \textit{entropía} en \textit{python}.}, captionpos=b]{files/src/.code/funciones.py}
 
 \vspace{1em}
-La metodología empleada para el desarrollo del experimento fue la siguiente: trabajamos sobre el tráfico de tres redes diferentes, como observadas por tres hosts particulares. 
+Para la experimentación, trabajaremos sobre el tráfico de tres redes diferentes:
 
 \begin{itemize}
-\item \textit{red 1}: como observada por un host con conexión wi-fi ubicado en una casa en el norte de la provincia.
-\item \textit{red 2}: como observada por un host con acceso por conexión wi-fi, ubicado en un edificio céntrico de la ciudad.
-\item \textit{red 3}: como observada por un host con acceso por conexión ethernet, ubicado en una zona suburbana de la ciudad.
+    \item \textit{red 1}: como observada por un host con acceso por conexión wi-fi, ubicado en un edificio céntrico de la ciudad.
+    \item \textit{red 2}: como observada por un host con acceso por conexión ethernet, ubicado en una zona suburbana de la ciudad.
+    \item \textit{red 3}: como observada por un host con conexión wi-fi ubicado en una casa en el norte de la provincia.
 \end{itemize}
 
 Podemos considerar la ubicación de cada uno de estos hosts como ubicaciones dentro de distintos anillos concéntricos, en términos de densidad poblacional, dentro del área metropolitana de Buenos Aires.
 
-Para cada red, tomamos muestras de $10.000$ tramas a lo largo de diferentes horarios ---mañana (9 am), tarde (18 pm) y noche (23 pm)---, y controlamos la interacción del host con la red. Esto es, las mediciones se realizaron bajo un contexto de \textit{reposo} ---minimizando la cantidad de paquetes envíados--- y bajo uso \textit{intensivo}.
+Para cada red, tomaremos muestras de $10.000$ tramas en un horario y día ---que suponemos--- es de mayor tráfico (a partir de las $18$ hs, un viernes), y controlaremos la interacción del host con la red. Esto es, las mediciones se realizarán bajo un contexto de \textit{reposo} ---minimizando la cantidad de paquetes envíados--- y bajo uso \textit{intensivo}, con el objetivo de medir la influencia del tráfico propio en la fuente resultante. 
+
+También, mediremos el tiempo de recolección de los datos, en el contexto de \textit{reposo}, a fin de obtener una noción respecto al flujo de tramas por unidad de tiempo en cada una de las redes analizadas.
+
+
 
 Además, realizaremos un análisis de las direcciones IP dentro de los paquetes ARP. Ya que este es un protocolo de capa de enlace, y local para cada una de las redes, esto nos permitirá observar las IPs propias de cada red con mayor detalle. A partir de las tramas capturadas, generaremos una segunda fuente de información de memoria nula, tal que cada símbolo sea del tipo $<\ SRC,\ DST >$. De este modo, de existir algun host \textit{distinguido}, es decir que sobresale en la cantidad de información que provee, lo podremos identificar a través de los símbolos a los que pertenece.
