@@ -25,10 +25,22 @@ Con respecto al destino de los paquetes, podemos observar que cerca del 99\% de 
 
 Como la computadora estaba en uso constante su entrada en la tabla de direcciones del router nunca se borra por lo cual no se requería de resolver conflictos a través del sistema de BROADCAST, por esto es que se incrementa la predominancia de los paquetes UNICAST por encima de BROADCAST, comparado al caso donde las computadoras estaban en reposo.
 
-FEDE e=0.7930921467386626
-NATAN e=0.29361981457362346
-MANU e=0.8628426093822834
+Medimos la entropia de cada una de las tres fuentes con las tramas resultantes de las capturas en reposo. Los resultados aproximados de las entropias fueron:
+
+\begin{itemize}
+    \item red1 = 0.793
+    \item red2 = 0.293
+    \item red3 = 0.862
+\end{itemize}
+
+Es decir, se puede esperar una cantidad mayor de información por símbolo en las redes 1 y 3, a comparación de la red 2. Esto muestra que los símbolos en la red 2 tienden a aparecer con menor dispersión, por lo que es altamente probable que el siguiente paquete sea información 'repetida' por lo que la entropía de la red es baja. 
 
 
+Una variable interesante es cuanto tiempo tardo cada red en capturar sus 10000 tramas. Para el caso donde las computadoras que capturaban paquetes estaban en reposo los tiempos aproximados son: 
+\begin{itemize}
+    \item red1 = 2212 segundos
+    \item red2 = 4647 segundos
+    \item red3 = 695 segundos
+\end{itemize}
 
-
+Para profundizar el análisis se podría experimentar capturando tramas en diferentes horarios del día y analizar como varía la frecuencia de captura en distintos horarios del día.
