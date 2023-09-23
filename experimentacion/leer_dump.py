@@ -5,6 +5,18 @@ def informacion(ps):
     i = -np.log2(ps)
     return i
 
+def leer_IPs(S):
+    ips = {}
+    for s in S:
+        ip1, ip2 = s[0], s[1]
+        if ip1 not in ips:
+            ips[ip1] = 0.0
+        ips[ip1] += 1.0 * S[s]
+        if ip2 not in ips:
+            ips[ip2] = 0.0
+        ips[ip2] += 1.0 * S[s]
+    return ips
+
 def entropia(S): # S = { s: q }
     N = sum(S.values())
     e = np.sum([(k/N) * informacion(k/N) for k in S.values()])
@@ -31,19 +43,31 @@ def leer_dump(path):
         
     return S, time
 
+def leer_ARP(path):
+    S = {}
+    pattern = re.compile(r'\((\d+\.\d+\.\d+\.\d+), (\d+\.\d+\.\d+\.\d+)\)')
+    with open(path, 'r', errors='ignore') as file:
+        for line in file:
+            matches = pattern.findall(line)
+            for match in matches:
+                src = match[0]  # Extract the source IP
+                dst = match[1]  # Extract the destination IP
+                s_i = (src, dst)  # Define the symbol for the source-destination pair
+
+                if s_i not in S:
+                    S[s_i] = 0.0
+                S[s_i] += 1.0
+        
+    return S
+
 def mostrar_fuente(S):
     N = sum(S.values())
     simbolos = sorted(S.items(), key=lambda x: -x[1])
     print("\n".join([ "%s, q: %d, p: %.5f, i: %.5f" % (d, k, k/N, informacion(k/N)) for d,k in simbolos ]))
+
     
 if __name__ == "__main__":
 
-    path1 = "./out/fede-reposo.txt"
-    path2 = "./out/natan-reposo.txt"
-    path3 = "./out/manu-reposo.txt"
-    S1, t1 = leer_dump(path1)
-    S2, t2 = leer_dump(path2)
-    S3, t3 = leer_dump(path3)
-    print(f"e={entropia(S1)}")
-    print(f"e={entropia(S2)}")
-    print(f"e={entropia(S3)}")
+    path = "./out/fede-ARP.txt"
+    S = leer_ARP(path)
+    print(S)
