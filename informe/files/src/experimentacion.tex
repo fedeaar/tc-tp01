@@ -19,6 +19,6 @@ Para cada red, tomaremos muestras de $10.000$ tramas en un horario y día ---que
 
 También, mediremos el tiempo de recolección de los datos, en el contexto de \textit{reposo}, a fin de obtener una noción respecto al flujo de tramas por unidad de tiempo en cada una de las redes analizadas.
 
+Respecto a la parte optativa, realizaremos un análisis de las direcciones IP dentro de los paquetes ARP. Ya que este es un protocolo de capa de enlace, y local a cada una de las redes, esto nos permitirá observar las IPs propias de cada red con mayor detalle. 
 
-
-Además, realizaremos un análisis de las direcciones IP dentro de los paquetes ARP. Ya que este es un protocolo de capa de enlace, y local para cada una de las redes, esto nos permitirá observar las IPs propias de cada red con mayor detalle. A partir de las tramas capturadas, generaremos una segunda fuente de información de memoria nula, tal que cada símbolo sea del tipo $<\ SRC,\ DST >$. De este modo, de existir algun host \textit{distinguido}, es decir que sobresale en la cantidad de información que provee, lo podremos identificar a través de los símbolos a los que pertenece.
+A partir de las tramas capturadas, generaremos una segunda fuente de información de memoria nula, tal que cada símbolo sea del tipo \textit{$\langle$src ip, dst ip$\rangle$}. De este modo, de existir algún host \textit{distinguido} ---es decir, en términos de la cantidad de información que provee---, lo podremos identificar.
