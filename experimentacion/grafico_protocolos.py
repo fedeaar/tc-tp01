@@ -9,6 +9,7 @@ def graficar(data1, data2, data3, opciones):
         combined_data[key] = [opciones["apply"](key, x) for x in [data1, data2, data3]]
 
     categories = [f'{key[0]}, {key[1]}' for key in combined_data.keys()]
+    categories.sort()
     values1, values2, values3 = zip(*combined_data.values())
 
     plt.figure()
